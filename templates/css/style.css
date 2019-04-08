@@ -1,0 +1,88 @@
+@font-face {
+    font-family: myFont;
+    src: url("../fonts/primer\ print.ttf");
+  }
+
+body{
+    background: url("../img/headphone_split.jpg") no-repeat center center fixed;
+    background-size: 100% auto;
+    font-family: myFont;
+}
+
+h1{
+    font-size: 4em;
+}
+
+h2{
+    font-size: 2em;
+}
+
+#navbar{
+    text-align: center;
+    color: white;
+}
+
+#left_panel{
+    width: 35em;
+    float: left;
+    position: relative;
+    padding: 1em;
+    color: white;
+    text-align: center;
+}
+
+#right_panel{
+    width: 35em;
+    float: right;
+    position: relative;
+    padding: 1em;
+    color: white;
+    text-align: center;
+}
+
+.content{
+    position: relative;
+    top: 5em;  
+    display: inline-block;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border-radius: 0.2em;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-family: myFont;
+    color: white;
+    font-size: 2em;
+    padding: 0.2em;
+    width: 6em;
+}
+
+#bluebtn{
+    border: 0.1em solid rgb(199, 231, 226);
+}
+
+#bluebtn:hover{
+    background-color: rgb(199, 231, 226);
+    border: 0.1em solid rgb(199, 231, 226);
+}
+
+#redbtn{
+    border: 0.1em solid rgb(252, 192, 191);
+}
+
+#redbtn:hover{
+    background-color: rgb(252, 192, 191);
+    border: 0.1em solid rgb(252, 192, 191);
+}
+
+#copyright{
+    top: 15em;
+    color: white;
+    position: relative;
+    text-align: center;
+    clear: left;
+    clear: right;
+}
