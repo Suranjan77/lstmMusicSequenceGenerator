@@ -19,7 +19,7 @@ h2{
 
 #navbar{
     text-align: center;
-    color: white;
+    color: #00ACC1;
 }
 
 #left_panel{
@@ -27,7 +27,7 @@ h2{
     float: left;
     position: relative;
     padding: 1em;
-    color: white;
+    color: #009688;
     text-align: center;
 }
 
@@ -36,7 +36,7 @@ h2{
     float: right;
     position: relative;
     padding: 1em;
-    color: white;
+    color: #FF5252;
     text-align: center;
 }
 
@@ -54,33 +54,36 @@ button {
     overflow: hidden;
     outline:none;
     font-family: myFont;
-    color: white;
     font-size: 2em;
     padding: 0.2em;
     width: 6em;
 }
 
 #bluebtn{
-    border: 0.1em solid rgb(199, 231, 226);
+    color: #009688;
+    border: 0.1em solid #009688;
 }
 
 #bluebtn:hover{
-    background-color: rgb(199, 231, 226);
-    border: 0.1em solid rgb(199, 231, 226);
+    background-color: #009688;
+    border: 0.1em solid #009688;
+    color: white;
 }
 
 #redbtn{
-    border: 0.1em solid rgb(252, 192, 191);
+    color: #FF5252;
+    border: 0.1em solid #FF5252;
 }
 
 #redbtn:hover{
-    background-color: rgb(252, 192, 191);
-    border: 0.1em solid rgb(252, 192, 191);
+    background-color: #FF5252;
+    border: 0.1em solid #FF5252;
+    color: white;
 }
 
 #copyright{
     top: 15em;
-    color: white;
+    color: #00ACC1;
     position: relative;
     text-align: center;
     clear: left;

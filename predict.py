@@ -1,7 +1,8 @@
 import numpy
+import json
 from music21 import instrument, note, stream, chord
-from keras.models import Sequential
-from keras.layers import Dense
+from keras.models import Sequential, model_from_json, load_model
+from keras.layers import Dense, Flatten
 from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.layers import Activation
@@ -62,23 +63,41 @@ def prepare_sequences(notes, pitchnames, n_vocab):
 
     return (network_input, normalized_input)
 
-def create_network(network_input, n_vocab, weightdir="none"):
+def create_network(network_input, n_vocab, genre, weightdir="none"):
     """ create the structure of the neural network """
-    model = Sequential()
-    model.add(LSTM(
-        512,
-        input_shape=(network_input.shape[1], network_input.shape[2]),
-        return_sequences=True
-    ))
-    model.add(Dropout(0.3))
-    model.add(LSTM(512, return_sequences=True))
-    model.add(Dropout(0.3))
-    model.add(LSTM(512))
-    model.add(Dense(256))
-    model.add(Dropout(0.3))
-    model.add(Dense(n_vocab))
-    model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+    if genre=="finalfantasy":
+        model = Sequential()
+        model.add(LSTM(
+            512,
+            input_shape=(network_input.shape[1], network_input.shape[2]),
+            return_sequences=True
+        ))
+        model.add(Dropout(0.3))
+        model.add(LSTM(512, return_sequences=True))
+        model.add(Dropout(0.3))
+        model.add(LSTM(512))
+        model.add(Dense(256))
+        model.add(Dropout(0.3))
+        model.add(Dense(n_vocab))
+        model.add(Activation('softmax'))
+        model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+
+    if genre=="jazz":
+        model = Sequential()
+        model.add(LSTM(
+            128,
+            input_shape=(network_input.shape[1], network_input.shape[2]),
+            return_sequences=True
+        ))
+        model.add(Dropout(0.3))
+        model.add(LSTM(128, return_sequences=True))
+        model.add(Flatten())
+        model.add(Dense(300))
+        model.add(Dropout(0.3))
+        model.add(Dense(n_vocab))
+        model.add(Activation('softmax'))
+        model.compile(loss='categorical_crossentropy', optimizer='adam')
+    
 
     if weightdir is not "none":
         # Load the weights to each node

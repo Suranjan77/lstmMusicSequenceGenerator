@@ -13,6 +13,7 @@ GENERATED_MUSIC_DIRECTORY = os.path.join(APP_ROOT,"generatedMusic")
 DEFAULT_MUSIC = "default.mid"
 
 @app.route("/")
+@app.route("/index.html")
 def home():
     return render_template("index.html")
 
@@ -20,7 +21,7 @@ def home():
 def generate():
     genre = request.args.get("genre", default="finalfantasy", type=str)
     filename = request.args.get("filename", type=str)
-    diversity = float(request.args.get("diversit    y"))
+    diversity = float(request.args.get("diversity"))
     noteslength = int(request.args.get("noteslength"))
 
     """ Generate a piano midi file """
@@ -34,7 +35,7 @@ def generate():
     n_vocab = len(set(notes))
 
     network_input, normalized_input = prepare_sequences(notes, pitchnames, n_vocab)
-    model = create_network(normalized_input, n_vocab, weightdir = os.path.join(MODEL_DIRECTORY, genre+".hdf5"))
+    model = create_network(normalized_input, n_vocab, genre, weightdir = os.path.join(MODEL_DIRECTORY, genre+".hdf5"))
     prediction_output = generate_notes(model, network_input, pitchnames, n_vocab, diversity, noteslength)
     midi_stream = create_midi(prediction_output)
 
@@ -48,8 +49,20 @@ def generate():
         return jsonify({"status":"failure", "generatedfilepath" : DEFAULT_MUSIC})
 
 @app.route("/files/<path:path>")
-def getfile(path):
-    return send_from_directory(GENERATED_MUSIC_DIRECTORY, path+".mid", as_attachment=True)
+def download_file(path):
+    return send_from_directory(GENERATED_MUSIC_DIRECTORY, path, as_attachment=True)
+
+@app.route("/files/<filename>", methods=["POST"])
+def upload_file(filename):
+    if "/" in filename:
+        return jsonify({"success":"false"})
+    try:
+        with open(os.path.join(GENERATED_MUSIC_DIRECTORY, filename), "wb") as fp:
+            fp.write(request.data)
+        return jsonify({"success":"true"})
+    except:
+        return jsonify({"success":"false"})
+
 
 @app.route("/files")
 def list_files():
