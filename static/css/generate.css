@@ -1,0 +1,184 @@
+@font-face {
+    font-family: myFont;
+    src: url("../fonts/primer\ print.ttf");
+  }
+
+body{
+    background: url("../img/plain_headphone.jpg") no-repeat center center fixed;
+    background-size: 100% auto;
+    font-family: myFont;
+    font-size: 1.5em;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border-radius: 0.2em;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-family: myFont;
+    font-size: 1.5em;
+    padding: 0.2em;
+    width: 6em;
+}
+
+#redbtn{
+	margin-top: 25px;
+    border: 0.1em solid #FF5252;
+}
+
+#redbtn:hover{
+	margin-top: 25px;
+    background-color: #FF5252;
+    border: 0.1em solid #FF5252;
+    color: white;
+}
+
+#slidercontainer{
+	display: block;
+}
+
+#diversity {
+  -webkit-appearance: none;
+  width: 230px;
+  height: 3px;
+  border-radius: 2px;
+  background: #009688;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+#diversity:hover {
+  opacity: 1;
+}
+
+#diversity::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #FF5252;
+  cursor: pointer;
+}
+
+#diversity::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #FF5252;
+  cursor: pointer;
+}
+
+input[type=text]{
+	margin: auto;
+	height: 50px;
+	width: 250px;
+	border: 2px solid #009688;
+  	color: #009688;
+  	font-family: myFont;
+  	font-size: 1em;
+  	background-color: transparent;
+  	display: block;
+  	margin-top: 4px;
+  	margin-bottom: 4px;
+}	
+
+input[type=text]:focus{
+	height: 50px;
+	width: 250px;
+	margin: auto;
+	border: 3px solid #FF5252;
+    font-family: myFont;  	
+  	color: #009688;
+  	font-size: 1em;
+  	background-color: transparent;
+  	display: block;
+  	margin-top: 4px;
+  	margin-bottom: 4px;
+}
+
+#genre{
+	display: block;	
+	margin: auto;
+	appearance: none;
+	outline: 0; 
+    background-color: transparent; 
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+  	background-position-x: 100%;
+  	background-position-y: 5px;
+    width: 250px; 
+    height: 50px; 
+    color: #009688; 
+    cursor: pointer; 
+    border: 2px solid #009688; 
+}
+
+#formcontainer{
+	position: relative;
+	top: 2em;
+	margin: 0 auto;
+	padding: 10px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 400px;
+	text-align: center;
+	box-shadow: 1px 1px 5px rgba(255,255,255,.5);
+}
+
+#copyright{
+    top: 3.5em;
+    font-size: 0.5em;
+    color: #00ACC1;
+    position: relative;
+    text-align: center;
+}
+
+.animate-bottom {
+  	position: relative;
+  	-webkit-animation-name: animatebottom;
+  	-webkit-animation-duration: 3s;
+  	animation-name: animatebottom;
+  	animation-duration: 3s;
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-500px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-500px; opacity:0 } 
+  to{ bottom:0px; opacity:1 }
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  margin: -55px 0 0 -55px;
+  border: 16px solid #009688;
+  border-radius: 50%;
+  border-top: 16px solid #FF5252;	
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

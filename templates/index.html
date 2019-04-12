@@ -1,26 +1,28 @@
 <html>
     <head>
+        <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/web.ico') }}" />
         <title>LSTMMUSIC</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body>
-        <div id="navbar">
-            <h1>AI can compose music</h1>
-        </div>
-        <div id="left_panel">
-            <div class="content">
-                <h2>Generate music using LSTM</h2><br>
-                <button id="bluebtn">Create</button>
+            <div id="navbar">
+                <h1>AI can compose music</h1>
             </div>
-        </div>
-        <div id="right_panel">
-            <div class="content">
-                <h2>View the playlist</h2><br>
-                <button id="redbtn">Playlist</button>
+            <div id="left_panel">
+                <div class="content">
+                    <h2>Generate music using LSTM</h2><br>
+                    <button id="bluebtn" onclick="location.href = '{{ url_for('html_generate') }}'">Create</button>
+                </div>
             </div>
-        </div>
-        <div id="copyright">
-            <p>Copyright &copy; 2019 Suranjan Poudel All Rights Reserved</p>
-        </div>
+            <div id="right_panel">
+                <div class="content">
+                    <h2>View the playlist</h2><br>
+                    <button id="redbtn" onclick="location.href = '{{ url_for('html_playlist') }}'">Playlist</button>
+                </div>
+            </div>
+
+            <div id="copyright">
+                <p>Copyright &copy; 2019 Suranjan Poudel All Rights Reserved</p>
+            </div>
     </body>
 </html>

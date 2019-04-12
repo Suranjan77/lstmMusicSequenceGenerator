@@ -1,0 +1,11 @@
+@font-face {
+    font-family: myFont;
+    src: url("../fonts/primer\ print.ttf");
+  }
+
+body{
+    background: url("../img/playlist_bg.jpg") no-repeat center center fixed;
+    background-size: 100% auto;
+    font-family: myFont;
+    font-size: 1.5em;
+}

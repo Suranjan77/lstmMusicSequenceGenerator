@@ -6,6 +6,7 @@ from keras.layers import Dense, Flatten
 from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.layers import Activation
+from keras import backend as K
 
 def create_midi(prediction_output):
     """ convert the output from the prediction to notes and create a midi file
@@ -133,5 +134,5 @@ def generate_notes(model, network_input, pitchnames, n_vocab, diversity, notesle
 
         pattern.append(index)
         pattern = pattern[1:len(pattern)]
-
+    K.clear_session()
     return prediction_output

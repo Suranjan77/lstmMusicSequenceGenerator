@@ -13,9 +13,9 @@ GENERATED_MUSIC_DIRECTORY = os.path.join(APP_ROOT,"generatedMusic")
 DEFAULT_MUSIC = "default.mid"
 
 @app.route("/")
-@app.route("/index.html")
+@app.route("/index")
 def home():
-    return render_template("index.html")
+    return render_template('index.html')
 
 @app.route("/generate")
 def generate():
@@ -44,13 +44,13 @@ def generate():
     midi_stream.write("midi", fp=filepath)
 
     if filepath is not None:
-        return jsonify({"status":"success", "generatedfilepath" : os.path.join(GENERATED_MUSIC_DIRECTORY, filepath)})
+        return jsonify({"status":"success", "generatedfile" : filepath})
     else:
-        return jsonify({"status":"failure", "generatedfilepath" : DEFAULT_MUSIC})
+        return jsonify({"status":"failure", "generatedfile" : DEFAULT_MUSIC})
 
-@app.route("/files/<path:path>")
-def download_file(path):
-    return send_from_directory(GENERATED_MUSIC_DIRECTORY, path, as_attachment=True)
+@app.route("/downloadfiles")
+def download_file():
+    return send_from_directory(GENERATED_MUSIC_DIRECTORY, request.args.get("filename", type=str), as_attachment=True)
 
 @app.route("/files/<filename>", methods=["POST"])
 def upload_file(filename):
@@ -73,5 +73,14 @@ def list_files():
         if os.path.isfile(path):
             files.append(filename)
     return jsonify(files)
+
+@app.route("/html_generate")
+def html_generate():
+    return render_template('generate.html')
+
+
+@app.route("/html_playlist")
+def html_playlist():
+    return render_template('playlist.html')
 
 app.run(debug=True, port=8080)

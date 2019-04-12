@@ -1,0 +1,33 @@
+<html>
+	<head>
+        <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/web.ico') }}" />
+        <title>LSTMMUSIC</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/generate.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </head>
+	<body>
+		<div id="loader" style="display:none;"></div>
+		<div id="formcontainer" class="animate-bottom">
+			<form onsubmit="return generateCall('{{ url_for('generate') }}', '{{ url_for('download_file') }}')">
+				<label id="lblfilename">Filename</label>
+				<input type="text" id="filename">
+				<label id="lblgenre">Genre</label>
+				<select id="genre">
+					<option value="finalfantasy">Melody</option>
+					<option value="jazz">Jazz</option>
+				</select>
+				<label id="lblseqlength">Sequence Length</label>
+				<input type="text" id="length">
+				<label id="lbldiversity">Diversity Parameter</label>
+				<div id="slidercontainer">
+					<input type="range" min="1" max="5" value="3" id="diversity"><span id="rangeValue"></span>
+				</div>
+				<button type="submit" id="redbtn">Generate!</button>
+			</form>
+		</div>
+
+		<div id="copyright">
+            <p>Copyright &copy; 2019 Suranjan Poudel All Rights Reserved</p>
+        </div>
+	</body>
+</html>
