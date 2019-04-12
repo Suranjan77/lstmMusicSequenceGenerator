@@ -1,11 +1,60 @@
 @font-face {
     font-family: myFont;
     src: url("../fonts/primer\ print.ttf");
-  }
+ }
 
 body{
     background: url("../img/playlist_bg.jpg") no-repeat center center fixed;
     background-size: 100% auto;
     font-family: myFont;
     font-size: 1.5em;
+}
+
+#listcontainer{
+	position: relative;
+	top: 2em;
+	margin: 0 auto;
+	padding: 10px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 400px;
+	height: 35px;
+	background-color: rgba(255,255,255,.7);
+	box-shadow: 1px 1px 5px rgba(255,255,255,.5);
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+}
+
+.song{
+	width: 300px;
+	height: 30px;
+	padding: 2px;
+	margin: auto;
+	color: #009688	;
+	border-bottom: 1px solid #009688;
+}
+
+.song:hover{
+	color: #009688;
+	background-color: rgba(255, 255, 255, .9);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .5); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, .8); 
 }
